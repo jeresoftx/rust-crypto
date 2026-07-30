@@ -10,5 +10,5 @@ La ejecución vive en el [GitHub Project #23](https://github.com/users/jeresoftx
 
 ## Estado editorial
 
-Todo el contenido inicia en `draft`. No está revisado ni publicado hasta una
-revisión humana conforme a RFC-0001 §20.
+El curso está completo como borrador técnico. No está revisado ni publicado:
+requiere revisión humana conforme a RFC-0001 §20.

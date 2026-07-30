@@ -39,7 +39,7 @@ integridad y protocolos; cierre editorial.
 3. **Simétrica:** confidencialidad, AES-128 educativo, modos, nonces y gestión de contraseñas. [x]
 4. **Clave pública:** aritmética modular, RSA didáctico, ECC, firmas y límites de claves pequeñas. [x]
 5. **Integridad y protocolos:** Merkle, MAC, TLS, JWT, OAuth y composición segura de protocolos. [x]
-6. **Cierre:** referencias, ejercicios, soluciones, auditoría y estado editorial `draft`.
+6. **Cierre:** referencias, ejercicios, soluciones, auditoría y estado editorial `draft`. [x]
 
 ## Ruta crítica
 
@@ -54,7 +54,8 @@ problema, alternativas, invariantes, Mermaid, ejemplos, ejercicios,
 soluciones, límites y referencias; los modelos estén probados; cada issue y PR
 sea trazable en el Project; no haya pendientes ni milestones abiertos.
 
-## Primer bloque ejecutable
+## Estado posterior al plan
 
-Cierre: consolidar glosario, referencias, límites de producción y auditoría de
-trazabilidad. El estado editorial se conserva en `draft`.
+La implementación está completa como borrador técnico. El siguiente paso es
+revisión humana editorial y técnica; no marcar como `reviewed` ni `published`
+sin la decisión correspondiente.

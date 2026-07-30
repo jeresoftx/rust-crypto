@@ -35,7 +35,7 @@ integridad y protocolos; cierre editorial.
 ## Fases
 
 1. **Fundación:** contrato criptográfico, amenazas, glosario inicial y crate sin dependencias. [x]
-2. **Hashes:** SHA-256, resistencia a colisiones, codificación, password hashing y límites del modelo.
+2. **Hashes:** SHA-256, resistencia a colisiones, codificación, password hashing y límites del modelo. [x]
 3. **Simétrica:** confidencialidad, AES-128 educativo, modos, nonces y gestión de contraseñas.
 4. **Clave pública:** aritmética modular, RSA didáctico, ECC, firmas y límites de claves pequeñas.
 5. **Integridad y protocolos:** Merkle, MAC, TLS, JWT, OAuth y composición segura de protocolos.
@@ -56,5 +56,5 @@ sea trazable en el Project; no haya pendientes ni milestones abiertos.
 
 ## Primer bloque ejecutable
 
-Hashes: especificar SHA-256, codificación, sal y límites de password hashing
-antes de implementar el modelo. No requiere dependencias, `unsafe` ni nightly.
+Cifrado simétrico: especificar AES, modos, nonces, autenticación y gestión de
+secretos antes de implementar el modelo. No requiere dependencias, `unsafe` ni nightly.

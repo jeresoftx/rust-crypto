@@ -46,3 +46,50 @@ Para un sistema real, la alternativa no es reimplementar RSA o ECC: es elegir
 una biblioteca mantenida y su API de protocolo. La implementación didáctica
 permite seguir la matemática; la biblioteca auditada asume la responsabilidad
 de tamaños, padding, validación y canales laterales.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[Mensaje menor al módulo] --> B[Exponenciación pública]
+    B --> C[Ciphertext didáctico]
+    C --> D[Exponenciación privada]
+    D --> E[Mensaje recuperado]
+    F[Producción] --> G[Esquema auditado con padding y claves reales]
+```
+
+El recorrido superior explica la aritmética; la rama de producción enfatiza que
+no es el mismo protocolo. RSA directo sin padding revela estructura y no debe
+usar para cifrar o firmar mensajes reales.
+
+## Modelo educativo
+
+```rust
+use rust_crypto::rsa_demo::RsaExample;
+
+let rsa = RsaExample::textbook();
+let ciphertext = rsa.encrypt(65);
+assert_eq!(rsa.decrypt(ciphertext), 65);
+```
+
+Los números del ejemplo son conocidos y factorizables. La lección no consiste
+en guardar esos valores, sino en observar cómo dos exponentes relacionados
+restauran el mensaje bajo un módulo pequeño.
+
+## Ejercicios y soluciones orientativas
+
+1. **Explica el límite del mensaje.** ¿Por qué el ejemplo requiere un entero
+   menor que el módulo? Solución: la aritmética opera en ese anillo; mensajes
+   grandes requieren codificación y, en producción, un esquema seguro.
+2. **Compara cifrado y firma.** Solución: la firma demuestra posesión de una
+   clave privada y no oculta el mensaje; el cifrado busca confidencialidad.
+3. **Elige una integración.** Solución: para una firma moderna usa una API
+   auditada que fije algoritmo, formato y validación; no combines `mod_pow`
+   con bytes de aplicación.
+
+## Lista de verificación
+
+- [x] El ejemplo RSA prueba aritmética modular, no seguridad operativa.
+- [x] El capítulo trata padding, tamaños y validación como condiciones esenciales.
+- [x] ECC y firmas se explican con sus límites de protocolo.
+- [x] No se presentan claves pequeñas como material criptográfico reutilizable.

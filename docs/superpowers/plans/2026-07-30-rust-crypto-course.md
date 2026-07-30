@@ -37,7 +37,7 @@ integridad y protocolos; cierre editorial.
 1. **Fundación:** contrato criptográfico, amenazas, glosario inicial y crate sin dependencias. [x]
 2. **Hashes:** SHA-256, resistencia a colisiones, codificación, password hashing y límites del modelo. [x]
 3. **Simétrica:** confidencialidad, AES-128 educativo, modos, nonces y gestión de contraseñas. [x]
-4. **Clave pública:** aritmética modular, RSA didáctico, ECC, firmas y límites de claves pequeñas.
+4. **Clave pública:** aritmética modular, RSA didáctico, ECC, firmas y límites de claves pequeñas. [x]
 5. **Integridad y protocolos:** Merkle, MAC, TLS, JWT, OAuth y composición segura de protocolos.
 6. **Cierre:** referencias, ejercicios, soluciones, auditoría y estado editorial `draft`.
 
@@ -56,5 +56,5 @@ sea trazable en el Project; no haya pendientes ni milestones abiertos.
 
 ## Primer bloque ejecutable
 
-Clave pública: especificar aritmética modular, RSA, ECC, firmas, padding y
-límites antes de implementar el modelo. No requiere dependencias, `unsafe` ni nightly.
+Integridad y protocolos: especificar Merkle, MAC, TLS, JWT y OAuth antes del
+modelo seguro. No requiere dependencias, `unsafe` ni nightly.

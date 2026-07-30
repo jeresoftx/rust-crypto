@@ -34,7 +34,7 @@ integridad y protocolos; cierre editorial.
 
 ## Fases
 
-1. **Fundación:** contrato criptográfico, amenazas, glosario inicial y crate sin dependencias.
+1. **Fundación:** contrato criptográfico, amenazas, glosario inicial y crate sin dependencias. [x]
 2. **Hashes:** SHA-256, resistencia a colisiones, codificación, password hashing y límites del modelo.
 3. **Simétrica:** confidencialidad, AES-128 educativo, modos, nonces y gestión de contraseñas.
 4. **Clave pública:** aritmética modular, RSA didáctico, ECC, firmas y límites de claves pequeñas.
@@ -56,6 +56,5 @@ sea trazable en el Project; no haya pendientes ni milestones abiertos.
 
 ## Primer bloque ejecutable
 
-Fundación: crear el crate, declarar el modelo de amenazas y establecer el
-contrato de aprendizaje frente a producción. No requiere dependencias,
-`unsafe` ni nightly.
+Hashes: especificar SHA-256, codificación, sal y límites de password hashing
+antes de implementar el modelo. No requiere dependencias, `unsafe` ni nightly.

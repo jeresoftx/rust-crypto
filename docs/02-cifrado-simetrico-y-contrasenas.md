@@ -49,3 +49,54 @@ objetivos. ChaCha20-Poly1305 puede ser preferible donde esa aceleración no
 existe. La alternativa correcta depende del protocolo, plataforma y biblioteca
 mantenida. Esta unidad enseña las transformaciones internas de AES, no decide
 un esquema de producción.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[Clave de 128 bits] --> B[Expansión de clave]
+    C[Bloque de 16 bytes] --> D[AddRoundKey]
+    B --> D
+    D --> E[9 rondas completas]
+    E --> F[Ronda final]
+    F --> G[Ciphertext de bloque]
+    G --> H[AEAD auditado para mensajes reales]
+```
+
+El diagrama termina antes de una API de mensajes porque AES de bloque no define
+autenticación, framing ni nonces. Esas decisiones pertenecen al modo AEAD y a
+su biblioteca auditada.
+
+## Modelo educativo
+
+```rust
+use rust_crypto::aes128::encrypt_block;
+
+let key = [0_u8; 16];
+let block = [0_u8; 16];
+let ciphertext = encrypt_block(key, block);
+
+assert_eq!(ciphertext.len(), 16);
+```
+
+El ejemplo demuestra la frontera del modelo: recibe y entrega exactamente un
+bloque. No debe extenderse concatenando bloques ni reutilizarse para datos
+reales.
+
+## Ejercicios y soluciones orientativas
+
+1. **Distingue propiedades.** ¿Qué falta después de cifrar con AES? Solución:
+   autenticidad e integridad; una construcción AEAD resuelve ambas bajo su
+   contrato de nonce y datos asociados.
+2. **Audita un nonce.** Un servicio genera nonces con un contador reiniciado.
+   Solución: el diseño es inseguro si repite nonce bajo la misma clave; usa la
+   estrategia recomendada por la biblioteca y conserva su estado necesario.
+3. **Convierte una contraseña en clave.** Solución: no apliques SHA-256 ni
+   rellenes bytes; usa una KDF auditada con sal y parámetros de costo.
+
+## Lista de verificación
+
+- [x] AES-128 coincide con un vector NIST de un bloque.
+- [x] El modelo no presenta un modo de operación como seguro por omisión.
+- [x] AEAD, nonces y KDF se describen como decisiones obligatorias de producción.
+- [x] No se usa `unsafe`, aleatoriedad casera ni dependencias externas.

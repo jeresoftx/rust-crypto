@@ -1,3 +1,5 @@
 //! Modelos educativos para comprender criptografía en Rust.
 //!
 //! Ninguna primitiva de este crate debe usarse para proteger datos reales.
+
+pub mod sha256;
